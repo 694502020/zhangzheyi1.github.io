@@ -1,0 +1,356 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热量营养查询 | 食品营养数据库 | 营养成分查询 - 福健网</title>
+<meta name="description" content="福健网提供全面的食物热量查询、营养成分数据库，包括各类水果、蔬菜、预包装食品的热量、碳水、蛋白质、脂肪、糖分等详细营养信息，帮您轻松了解日常饮食营养价值。">
+<meta name="keywords" content="热量查询,营养成分,食物热量表,卡路里计算,健康饮食,营养价值,食品数据库">
+ <link rel="canonical" href="http://www.fj123.cn/food/index.php" />
+    <style>
+/* 在<style>标签内添加这些样式 */
+
+
+.nav-button {
+flex: 1;
+    background-color: #4acd3a1f;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px 5px;
+    text-align: center;
+    margin: 0 5px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap:1vw;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+.nav-button:hover {
+    background-color: #eaeaea;
+}
+.header-content h1 {
+    flex: 1;             /* 让标题占据剩余空间 */
+    text-align: center;  /* 文字居中 */
+    margin: 0 auto;      /* 水平居中 */
+}
+
+/* 如果有限定宽度的话，可以调整下面的样式 */
+@media (max-width: 480px) {
+    .nav-button {
+        padding: 6px 3px;
+        font-size: 12px;
+        margin: 0 2px;
+    }
+}
+	html, body, div, header, footer, nav, main, section, article, h1, h2, h3, h4, h5, h6, p, span, a, img, ul, ol, li, form, input, button, dl, dt, dd, pre, fieldset, textarea, blockquote, th, td  {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        .app-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .search-form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px 0 0 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        
+.search-button {
+    position: relative;
+    width: 50px;
+    height: 46px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    padding: 0;
+}
+
+.search-button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -53.5%);
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/fangdajing.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+        
+        .nutrition-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+.header-content {
+    display: flex;
+    align-items: center;
+    position: relative;  /* 改为相对定位 */
+}
+
+.logo-link {
+    position: absolute;  /* 绝对定位 */
+    left: 0;             /* 放置在左侧 */
+    text-decoration: none;
+}
+
+        .logo {
+            background-color: white;
+            color: #4CAF50;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+
+
+.mobile-menu.active {
+    max-height: 300px; /* 足够容纳所有菜单项 */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+        .mobile-menu a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* 分类导航样式 */
+        .category-section {
+            margin-bottom: 20px;
+        }
+        
+        .category-title {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .category-item {
+            background-color: white;
+            padding: 12px 5px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .category-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        }
+        
+        .more-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+		
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    margin-top: 10px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.mobile-menu.active {
+    display: flex;
+    max-height: 300px; /* 足够大的高度以容纳所有菜单项 */
+    opacity: 1;
+}
+
+#extraCategories {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.8s ease, opacity 0.8s ease;
+    overflow: hidden;
+    display: grid;
+}
+
+#extraCategories.expanded {
+    max-height: 500px; /* 足够大的高度以容纳所有额外分类 */
+    opacity: 1;
+}
+
+#toggleIcon {
+    transition: transform 0.8s ease;
+}
+
+
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+<div class="header-content">
+    <a href="/" class="logo-link">
+        <div class="logo">主页</div>
+    </a>
+   <a href="/food/index.php" style=" 
+ text-decoration: none;  /* 删除下划线 */
+  color: inherit;  /* 继承父级元素的文本颜色 */
+  font-weight: inherit;  /* 继承父级元素的字体粗细 */
+  font-style: inherit;  /* 继承父级元素的字体样式 */;flex: 1;
+    text-align: center;
+    margin: 0 auto;"><h1>食物库</h1></a>
+</div>
+        </header>
+<div class="nav-buttons">
+    <a href="/food/index.php" class="nav-button">食物库</a>
+    <a href="/jkys/page/1.html" class="nav-button">健康知识</a>
+    <a href="/zhuye-gongnen/gongju/index.html" class="nav-button">健康工具</a>
+    <a href="/" class="nav-button">主页</a>
+	
+</div>  
+<br>      
+        <form class="search-form" method="GET" action="/food/search/" onsubmit="event.preventDefault(); window.location.href='/food/search/' + encodeURIComponent(document.querySelector('.search-input').value) + '.html';">
+            <input type="text" name="search" class="search-input" placeholder="输入食品名称...">
+<button type="submit" class="search-button">
+</button>
+        </form>
+        
+<!-- 按分类导航 -->
+<div class="category-section">
+    <h2 class="category-title">按类别</h2>
+    <div class="category-grid" id="mainCategories">
+<a href="/food/category/shuiguo.html" class="category-item">水果</a><a href="/food/category/shucai.html" class="category-item">蔬菜</a><a href="/food/category/roulei.html" class="category-item">肉类</a><a href="/food/category/guwu.html" class="category-item">谷物</a><a href="/food/category/nailei.html" class="category-item">奶类</a><a href="/food/category/doulei.html" class="category-item">豆类</a><a href="/food/category/jianguo.html" class="category-item">坚果</a><a href="/food/category/lingshilei.html" class="category-item">零食类</a><a href="/food/category/tiandian.html" class="category-item">甜点</a>    </div>
+    
+<!-- 额外分类，初始隐藏 -->
+<div class="category-grid" id="extraCategories" style="display: none;">
+<a href="/food/category/qiaokeli.html" class="category-item">巧克力</a><a href="/food/category/guozhilei.html" class="category-item">果汁类</a><a href="/food/category/youlei.html" class="category-item">油类</a><a href="/food/category/youzhilei.html" class="category-item">油脂类</a><a href="/food/category/ganshu.html" class="category-item">甘薯</a><a href="/food/category/yanlei.html" class="category-item">盐类</a><a href="/food/category/tansuanyinliao.html" class="category-item">碳酸饮料</a><a href="/food/category/tangguo.html" class="category-item">糖果</a><a href="/food/category/tangjiang.html" class="category-item">糖浆</a><a href="/food/category/tanglei.html" class="category-item">糖类</a><a href="/food/category/penghuashipin.html" class="category-item">膨化食品</a><a href="/food/category/cha.html" class="category-item">茶</a><a href="/food/category/junlei.html" class="category-item">菌类</a><a href="/food/category/caipin.html" class="category-item">菜品</a><a href="/food/category/jiulei.html" class="category-item">酒类</a><a href="/food/category/jiangyou.html" class="category-item">酱油</a><a href="/food/category/culei.html" class="category-item">醋类</a><a href="/food/category/binggan.html" class="category-item">饼干</a></div>
+    
+    <a href="javascript:void(0);" class="more-link" id="toggleCategories">
+        <span id="toggleText">显示更多分类</span>
+        <span id="toggleIcon">?</span>
+    </a>
+</div>
+        
+
+        
+
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('toggleCategories');
+        const extraCategories = document.getElementById('extraCategories');
+        const toggleText = document.getElementById('toggleText');
+        const toggleIcon = document.getElementById('toggleIcon');
+        
+        // 首先确保额外分类区域是可见的，但高度为0
+        extraCategories.style.display = 'grid';
+        
+        toggleButton.addEventListener('click', function() {
+            // 切换额外分类的显示状态
+            if (extraCategories.classList.contains('expanded')) {
+                extraCategories.classList.remove('expanded');
+                toggleText.textContent = '显示更多分类';
+                toggleIcon.style.transform = 'rotate(0deg)';
+            } else {
+                extraCategories.classList.add('expanded');
+                toggleText.textContent = '收起分类';
+                toggleIcon.style.transform = 'rotate(90deg)';
+            }
+        });
+    });
+</script>    
+
+</body>
+</html>

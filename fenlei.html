@@ -1,0 +1,582 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="水果">
+<title>水果热量查询结果 | 营养成分数据 - fj123.cn</title>
+<meta name="description" content="查看水果的详细热量信息和营养成分数据，包括热量、碳水、蛋白质、脂肪、糖分、膳食纤维等全面营养分析，助您科学饮食。">
+<meta name="keywords" content="水果热量,水果营养成分,水果卡路里,食物营养查询,健康饮食指南">
+    <link rel="canonical" href="http://www.fj123.cn/food/category/shuiguo.html" />
+ 
+    <style>
+html, body, div, header, footer, nav, main, section, article, h1, h2, h3, h4, h5, h6, p, span, a, img, ul, ol, li, form, input, button, dl, dt, dd, pre, fieldset, textarea, blockquote, th, td  {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        .app-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .search-form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px 0 0 25px;
+            font-size: 16px;
+            outline: none;
+        }
+.food-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.search-button {
+    position: relative;
+    width: 50px;
+    height: 46px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    padding: 0;
+}
+
+.search-button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -53.5%);
+    width: 24px;
+    height: 24px;
+    background-image: url(../../images/fangdajing.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo-link {
+            text-decoration: none;
+        }
+
+        .logo {
+            background-color: white;
+            color: #4CAF50;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .menu-icon span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 0 0 10px 10px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* 分类标题样式 */
+        .category-title {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+        
+        /* 食物列表样式 */
+        .food-list {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .food-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.2s;
+        }
+        
+        .food-item:last-child {
+            border-bottom: none;
+        }
+        
+        .food-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .food-name {
+            display: flex;
+            align-items: center;
+        }
+        
+        .food-image {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .food-calories {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+        
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+		/* 在现有样式的末尾添加 */
+.loading-indicator {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    display: none;
+}
+
+/* 让图片在加载时有个占位样式 */
+.food-image img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.food-image img[data-src] {
+    opacity: 0.2;
+}
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="/" class="logo-link">
+                    <div class="logo">主页</div>
+                </a>
+                <a href="http://www.fj123.cn/food/index.php" style="text-decoration: none;
+color: inherit;"><h1>食物库</h1></a>
+                <div class="menu-icon" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+
+ <a href="/food/index.php">食物库</a>
+                <a href="/jkys/page/1.html">健康知识</a>
+                <a href="/zhuye-gongnen/gongju/index.html">健康工具</a>
+ 				<a href="/">主页</a>
+            </div>
+        </header>
+        
+        <form class="search-form" method="GET" action="/food/search/" onsubmit="event.preventDefault(); window.location.href='/food/search/' + encodeURIComponent(document.querySelector('.search-input').value) + '.html';">
+            <input type="text" name="search" class="search-input" placeholder="输入食品名称...">
+<button type="submit" class="search-button">
+</button>
+        </form>
+        
+        <!-- 面包屑导航 -->
+        <div class="breadcrumb">
+            <a href="/">首页</a>
+            <span>›</span>
+            <a href="/food/index.php">食物分类</a>
+            <span>›</span>
+            水果        </div>
+        
+        <!-- 分类标题 -->
+        <h2 class="category-title">水果</h2>
+        
+<!-- 食物列表 -->
+<div class="food-list" id="foodList">
+            <a href="/food/siguaguo/6306.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/siguaguo.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="丝瓜果" class="shiwutupian">                                            </div>
+                    丝瓜果                </div>
+                <div class="food-calories">
+                    76 大卡/100克
+                </div>
+            </a>
+        <a href="/food/yunnanxingzi/6182.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/yunnanxingzi.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="云南杏子" class="shiwutupian">                                            </div>
+                    云南杏子                </div>
+                <div class="food-calories">
+                    115 大卡/100克
+                </div>
+            </a>
+        <a href="/food/xianrenzhangguo/3115.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/xianrenzhangguo.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="仙人掌果" class="shiwutupian">                                            </div>
+                    仙人掌果                </div>
+                <div class="food-calories">
+                    105 大卡/100克
+                </div>
+            </a>
+        <a href="/food/guangguopipa/3197.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/guangguopipa.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="光果枇杷" class="shiwutupian">                                            </div>
+                    光果枇杷                </div>
+                <div class="food-calories">
+                    88 大卡/100克
+                </div>
+            </a>
+        <a href="/food/bingcheng/3171.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/bingcheng.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="冰橙" class="shiwutupian">                                            </div>
+                    冰橙                </div>
+                <div class="food-calories">
+                    112 大卡/100克
+                </div>
+            </a>
+        <a href="/food/bingtangcheng/3089.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/bingtangcheng.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="冰糖橙" class="shiwutupian">                                            </div>
+                    冰糖橙                </div>
+                <div class="food-calories">
+                    60 大卡/100克
+                </div>
+            </a>
+        <a href="/food/bingtangxiangjiao/5894.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/bingtangxiangjiao.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="冰糖香蕉" class="shiwutupian">                                            </div>
+                    冰糖香蕉                </div>
+                <div class="food-calories">
+                    87 大卡/100克
+                </div>
+            </a>
+        <a href="/food/bingpingguo/3172.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/bingpingguo.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="冰苹果" class="shiwutupian">                                            </div>
+                    冰苹果                </div>
+                <div class="food-calories">
+                    41 大卡/100克
+                </div>
+            </a>
+        <a href="/food/bingcaoputao/6174.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/bingcaoputao.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="冰草葡萄" class="shiwutupian">                                            </div>
+                    冰草葡萄                </div>
+                <div class="food-calories">
+                    56 大卡/100克
+                </div>
+            </a>
+        <a href="/food/bingputaocheng/6266.html" class="food-item">
+                <div class="food-name">
+                    <div class="food-image">
+                                                    <img data-src="/images/shipin/bingputaocheng.webp" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="冰葡萄橙" class="shiwutupian">                                            </div>
+                    冰葡萄橙                </div>
+                <div class="food-calories">
+                    104 大卡/100克
+                </div>
+            </a>
+            </div>
+
+<!-- 加载状态提示 -->
+<div id="loadingIndicator" style="display: none; text-align: center; padding: 15px;">
+    <p>加载中...</p>
+</div>
+
+<!-- 无更多数据提示 -->
+<div id="noMoreData" style="display: none; text-align: center; padding: 15px; color: #999;">
+    <p>已经到底了</p>
+</div>
+
+<input type="hidden" id="currentPage" value="1">
+<input type="hidden" id="totalPages" value="351">
+<input type="hidden" id="categoryPinyin" value="shuiguo">
+    </div>
+    
+
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // 懒加载相关变量
+        const foodList = document.getElementById('foodList');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const noMoreData = document.getElementById('noMoreData');
+        const currentPageElement = document.getElementById('currentPage');
+        const totalPagesElement = document.getElementById('totalPages');
+        const categoryPinyin = document.getElementById('categoryPinyin').value;
+        
+        let currentPage = parseInt(currentPageElement.value);
+        let totalPages = parseInt(totalPagesElement.value);
+        let isLoading = false;
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', function() {
+            // 检查是否滚动到底部
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+                loadMoreFoods();
+            }
+            
+            // 执行图片懒加载
+            lazyLoadImages();
+        });
+        
+        // 初始执行一次图片懒加载
+        lazyLoadImages();
+        
+        // 加载更多食物数据
+        function loadMoreFoods() {
+            // 如果正在加载或已经加载完所有页，则退出
+            if (isLoading || currentPage >= totalPages) {
+                if (currentPage >= totalPages) {
+                    noMoreData.style.display = 'block';
+                }
+                return;
+            }
+            
+            isLoading = true;
+            loadingIndicator.style.display = 'block';
+            
+            // 准备加载下一页
+            currentPage++;
+            
+            // 发送AJAX请求获取更多数据
+            fetch(`/food/category/${categoryPinyin}.html?page=${currentPage}&ajax=1`)
+                .then(response => response.json())
+                .then(data => {
+                    // 处理返回的数据
+                    if (data.foods && data.foods.length > 0) {
+                        // 添加新的食物项到列表
+data.foods.forEach(food => {
+    const foodPinyin = food['食物拼音'] ? food['食物拼音'] : getPinyin(food['食物名称']);
+    const calories = extractCalories(food['热量']);
+                            
+                            let imgHtml = '';
+                            if (food['图片路径']) {
+                                // 替换src为data-src实现图片懒加载
+                                imgHtml = food['图片路径'].replace(
+                                    /src=(["\'])(.*?)(["\'])/,
+                                    'data-src=$1$2$3 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"'
+                                );
+                            } else {
+                                imgHtml = '<div style="width: 30px; height: 30px; background-color: #f0f0f0;"></div>';
+                            }
+                            
+                             const foodItemHtml = `
+        <a href="/food/${encodeURIComponent(foodPinyin)}/${food.id}.html" class="food-item">
+                                    <div class="food-name">
+                                        <div class="food-image">
+                                            ${imgHtml}
+                                        </div>
+                                        ${food['食物名称']}
+                                    </div>
+                                    <div class="food-calories">
+                                        ${calories} 大卡/100克
+                                    </div>
+                                </a>
+                            `;
+                            
+                            foodList.insertAdjacentHTML('beforeend', foodItemHtml);
+                        });
+                        
+                        // 对新加载的图片执行懒加载
+                        lazyLoadImages();
+                    }
+                    
+                    // 更新页数信息
+                    currentPageElement.value = data.currentPage;
+                    totalPagesElement.value = data.totalPages;
+                    totalPages = data.totalPages;
+                    
+                    // 如果已经是最后一页，显示"已经到底了"
+                    if (currentPage >= totalPages) {
+                        noMoreData.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('加载更多食物数据失败:', error);
+                })
+                .finally(() => {
+                    isLoading = false;
+                    loadingIndicator.style.display = 'none';
+                });
+        }
+        
+        // 图片懒加载函数
+        function lazyLoadImages() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            lazyImages.forEach(img => {
+                if (isElementInViewport(img)) {
+                    img.src = img.getAttribute('data-src');
+                    img.removeAttribute('data-src');
+                }
+            });
+        }
+        
+        // 检查元素是否在可视区域内
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // 简单的拼音转换函数
+        function getPinyin(chinese) {
+            // 这里应该实现完整的中文转拼音功能，但现在只是一个占位符
+            // 实际项目中应该调用更完整的拼音转换函数
+            return chinese.toLowerCase().replace(/\s+/g, '');
+        }
+        
+        // 提取热量数值的函数
+        function extractCalories(calories) {
+            if (typeof calories === 'number') {
+                return Math.round(calories);
+            }
+            
+            if (typeof calories === 'string') {
+                const matches = calories.match(/(\d+(\.\d+)?)/);
+                if (matches && matches[1]) {
+                    return Math.round(parseFloat(matches[1]));
+                }
+            }
+            
+            return 0;
+        }
+    });
+</script>
+
+</body>
+</html>
